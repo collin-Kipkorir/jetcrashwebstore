@@ -12,13 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans">
-
 </head>
 
 <body>
     <div class="navigationIcons">
         <span class="imgNav">
-            <!-- <i class="fa-solid fa-arrow-left"></i> -->
             <img class="playImg" src="./assets/playStore.png" alt="">
             <span class="gplay">Google Play</span>
         </span>
@@ -55,7 +53,7 @@
             <hr>
             <div class="application">
                 <span class="appContent">
-                    <span class="hr-rev">5M+</span>
+                    <span class="hr-rev">1M+</span>
                     <span>Downloads</span>
                 </span>
             </div>
@@ -63,7 +61,7 @@
             <div class="application">
                 <span class="appContent">
                     <span class="hr-rev"><i class="fas fa-regular fa-medal"></i></span>
-                    <span>Editor's Choise</span>
+                    <span>Editor's Choice</span>
                 </span>
             </div>
             <hr>
@@ -73,7 +71,6 @@
                     <span>Rated for 18+ <i class="fas fa-circle-info"></i> </span>
                 </span>
             </div>
-
         </div>
     </div>
 
@@ -87,15 +84,12 @@
         </div>
     </a>    
             
-    <!-- </a> -->
-
     <div class="wshLst">
         <span><i class="fa-solid fa-folder-plus"></i> </span><span>Add to wishlist</span>
     </div>
 
     <div class="avaiLability">
         <span>
-            <!-- <i class="fa-solid fa-laptop"></i> -->
             <i class="fa-solid fa-mobile-screen-button"></i>
         </span>
         <span>This app is available for all your devices</span>
@@ -106,18 +100,13 @@
         <div class="imgContainer">
             <!-- Scrollable items -->
             <div id="imageForA" class="imaging imageForA">
-
             </div>
-
             <div id="imageForB" class="imaging imageForB">
             </div>
-
             <div id="imageForC" class="imaging imageForC">
             </div>
-
             <div id="imageForD" class="imaging imageForD">
             </div>
-
         </div>
     </div>
 
@@ -389,6 +378,38 @@
         </div>
     </div>
 </body>
-<script src="./script/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const installBtn = document.getElementById("installBtn");
+        const apkLink = document.getElementById("apkLink");
+        const progressContainer = document.getElementById("progressContainer");
+        const progressBar = document.getElementById("progressBar");
+
+        installBtn.addEventListener("click", function () {
+            progressContainer.style.display = "block";
+            apkLink.click();
+
+            const evtSource = new EventSource("/progress");
+
+            evtSource.onmessage = function (event) {
+                const data = JSON.parse(event.data);
+                const progress = data.progress;
+                progressBar.style.width = progress + "%";
+
+                if (progress === 100) {
+                    evtSource.close();
+                    progressContainer.style.display = "none";
+                    alert("Download completed!");
+                }
+            };
+
+            evtSource.onerror = function () {
+                evtSource.close();
+                progressContainer.style.display = "none";
+                alert("An error occurred during the download process.");
+            };
+        });
+    });
+</script>
 
 </html>
