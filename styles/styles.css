@@ -362,6 +362,20 @@ hr{
     display: none;
 }
 
+/* Add this CSS for the progress bar */
+.progressContainer {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progressBar {
+    width: 0;
+    height: 5px;
+    background-color: #4caf50;
+}
 
 
 .closeBtn{
