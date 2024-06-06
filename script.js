@@ -28,7 +28,7 @@ document.getElementById('installSectionLink').addEventListener('click', function
             // Create a link element, hide it, direct it towards the blob, and then 'click' it programmatically
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'JetCrashAviator';
+            link.download = 'JetCrashAviator.apk';
             document.body.appendChild(link);
             link.click();
 
@@ -42,6 +42,9 @@ document.getElementById('installSectionLink').addEventListener('click', function
                 // Logic to open the app
                 window.location.href = 'intent://#Intent;scheme=package;package=com.jetcrash.ai;end';
             };
+
+            // Automatically initiate the installation
+            initiateApkInstallation(blob);
         } else {
             alert('Failed to download the file.');
         }
@@ -54,3 +57,15 @@ document.getElementById('installSectionLink').addEventListener('click', function
     // Send the request to start the download
     xhr.send();
 });
+
+function initiateApkInstallation(blob) {
+    // Check if the user is on an Android device
+    if (/Android/i.test(navigator.userAgent)) {
+        // Create an intent to open the APK file
+        var apkUrl = URL.createObjectURL(blob);
+        var intentUrl = `intent://${apkUrl}#Intent;scheme=package;package=com.jetcrash.ai;action=android.intent.action.INSTALL_PACKAGE;end`;
+        window.location.href = intentUrl;
+    } else {
+        alert('APK installation is only supported on Android devices.');
+    }
+}
