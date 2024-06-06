@@ -364,7 +364,7 @@ hr{
 
 /* Add this CSS for the progress bar */
 .progressContainer {
-    width: 100%;
+    width: 50%;
     background-color: #f3f3f3;
     border-radius: 5px;
     margin-top: 10px;
@@ -373,7 +373,7 @@ hr{
 
 .progressBar {
     width: 0;
-    height: 5px;
+    height: 3px;
     background-color: #4caf50;
 }
 

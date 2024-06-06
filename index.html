@@ -78,14 +78,13 @@
         <div class="installSection">
             <span id="installBtn" class="installBtn">Install</span>
             <a id="apkLink" href="./assets/app/JetCrashAviator.apk" download style="display: none;"></a>
-            <div id="progressContainer" class="progressContainer" style="display: none;">
-                <div id="progressBar" class="progressBar"></div>
-            </div>
+            
         </div>
     </a>
-
-    <input type="file" id="apkFileInput" style="display:none;" accept=".apk" />
-            
+    
+    <div id="progressContainer" class="progressContainer" style="display: none;">
+        <div id="progressBar" class="progressBar"></div>
+    </div> 
     <div class="wshLst">
         <span><i class="fa-solid fa-folder-plus"></i> </span><span>Add to wishlist</span>
     </div>
@@ -381,63 +380,33 @@
     </div>
 </body>
 <script>
- document.addEventListener("DOMContentLoaded", function () {
-    const installBtn = document.getElementById("installBtn");
-    const apkLink = document.getElementById("apkLink");
-    const progressContainer = document.getElementById("progressContainer");
-    const progressBar = document.getElementById("progressBar");
-    const apkFileInput = document.getElementById("apkFileInput");
+    document.addEventListener("DOMContentLoaded", function () {
+        const installBtn = document.getElementById("installBtn");
+        const apkLink = document.getElementById("apkLink");
+        const progressContainer = document.getElementById("progressContainer");
+        const progressBar = document.getElementById("progressBar");
 
-    // Check if the APK has been downloaded before
-    const apkDownloaded = localStorage.getItem("apkDownloaded");
-
-    if (apkDownloaded) {
-        installBtn.textContent = "Open";
-    }
-
-    installBtn.addEventListener("click", function () {
-        if (apkDownloaded) {
-            // Prompt user to select the APK file for installation
-            apkFileInput.click();
-        } else {
+        installBtn.addEventListener("click", function () {
             progressContainer.style.display = "block";
+            apkLink.click();
 
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 10;
+            const evtSource = new EventSource("/progress");
+
+            evtSource.onmessage = function (event) {
+                const data = JSON.parse(event.data);
+                const progress = data.progress;
                 progressBar.style.width = progress + "%";
 
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    apkLink.click();
-                    localStorage.setItem("apkDownloaded", "true");
-                    setTimeout(() => {
-                        progressContainer.style.display = "none";
-                        progressBar.style.width = "0%";
-                        installBtn.textContent = "Open";
-                        alert("Download completed!");
-                    }, 500);
+                if (progress === 100) {
+                    evtSource.close();
+                    progressContainer.style.display = "none";
+                    alert("Download completed!");
                 }
-            }, 200);
-        }
-    });
+            };
 
-    apkFileInput.addEventListener("change", function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            // Attempt to initiate the installation process (not supported by most browsers)
-            const apkUrl = URL.createObjectURL(file);
-            const iframe = document.createElement("iframe");
-            iframe.style.display = "none";
-            iframe.src = apkUrl;
-            document.body.appendChild(iframe);
-            setTimeout(() => {
-                document.body.removeChild(iframe);
-            }, 1000);
-        }
+        
+        });
     });
-});
-
 </script>
 
 </html>
