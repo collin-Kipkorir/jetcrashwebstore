@@ -1,0 +1,653 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fff;
+    font-family: 'Product Sans', sans-serif;
+    color: grey;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('data:font/woff2;base64,{{base64-encoded-font-data}}') format('woff2');
+    /* Add other font properties if necessary */
+}
+
+/* @media only screen and (min-width: 601px) {
+    body {
+        display: none;
+    }
+} */
+.progressContainer {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.progressBar {
+    width: 0%;
+    height: 20px;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.navigationIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: #fff;
+    z-index: 100; /* Ensure the navigation icons are above other content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Add shadow to bottom */
+}
+
+
+.rightNavs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.fa-user{
+    background-color: #ccc;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+
+.gplay{
+    font-size: 25px;
+    font-family: 'Product Sans', sans-serif;
+}
+
+.playImg{
+    width: 25px;
+}
+
+.imgNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.appInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+    margin-top: 6rem;
+}
+
+.appImage{
+    height: 80px;
+    width: 80px;
+    background: url(/assets/favicon.png);
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.appExplain{
+    font-weight: bold;
+}
+
+.appOwner{
+    margin-top: 10px;
+}
+
+.appName{
+    font-size: 25px;
+    color: black;
+}
+
+.owner{
+    color: #01875f;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.category{
+    color: grey;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+hr{
+    height: 35px;
+    margin-top: 15px;
+    color: grey;
+}
+.appSpecs {
+    display: flex;
+    height: 80px;
+    margin: 20px;
+    /* Overflow hidden to prevent overflow from the main container */
+    overflow: hidden;
+}
+
+.applicationContainer {
+    /* Flexbox to allow the container to grow beyond its parent */
+    display: flex;
+    /* Enable horizontal scrolling */
+    overflow-x: auto;
+    /* Prevent wrapping of items */
+    white-space: nowrap;
+}
+
+.applicationContainer::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.application {
+    width: 140px; /* Use min-width instead of width */
+    padding: 10px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    /* background-color: grey; */
+    margin-right: 10px; /* Add margin between items */
+    /* border: solid; */
+}
+
+.hr-rev{
+    color: black;
+}
+
+.fa-star{
+    font-size: 15px;
+}
+
+.appContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.fa-info{
+    border: solid 2px;
+    padding: 2.5px 6px;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
+.paCont{
+    border: solid 1px;
+    font-weight: bold;
+    color: black;
+}
+.fa-circle-info{
+    color: grey;
+}
+
+.installSection{
+    display: flex;
+    justify-content: center;
+}
+
+.installBtn{
+    background-color: #01875f;
+    color: #fff;
+    padding: 10px 150px;
+    font-size: 17px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    
+}
+
+.wshLst{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: #01875f;
+    gap: 20px;
+}
+
+.avaiLability{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    gap: 5px;
+}
+
+.imgSpecs{
+    display: flex;
+    height: 200px;
+    margin: 20px;
+    /* Overflow hidden to prevent overflow from the main container */
+    overflow: hidden;
+}
+
+.imgContainer{
+    /* Flexbox to allow the container to grow beyond its parent */
+    display: flex;
+    /* Enable horizontal scrolling */
+    overflow-x: auto;
+    /* Prevent wrapping of items */
+    white-space: nowrap;
+}
+
+.imaging{
+    min-width: 120px; /* Use min-width instead of width */
+    padding: 10px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    /* background-color: grey; */
+    margin-right: 10px; /* Add margin between items */
+    
+}
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, etc.) */
+.imgContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Optional: Hide scrollbar for Firefox */
+.imgContainer {
+    scrollbar-width: none;
+}
+
+
+.imageForA{
+    background: url(/assets/play.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.imageForB{
+    background: url(/assets/sign-in.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.imageForC{
+    background: url(/assets/top-crash.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.imageForD{
+    background: url(/assets/sign-up.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    border: solid 2px grey;
+}
+
+.abtSection{
+    margin: 20px;
+}
+
+.abtHeader{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.abt-hd{
+    color: black;
+}
+
+.abtExplain{
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+.dataContainer{
+    align-items: center;
+    height: 120px;
+    border: solid 2px grey;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.share, .lock{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fa-share-nodes, .fa-lock{
+    font-size: 20px;
+}
+
+.zoomin{
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+
+.imgCont{
+    position: absolute;
+    display: flex;
+    top: 30%;
+    flex-direction: column;
+    margin: 20px;
+    position: fixed;
+    /* display: none; */
+}
+
+/* .welcomeImg .bonusImg .greatnessImg, .closinImg{
+    display: none;
+} */
+
+.closers{
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 40px;
+    display: none;
+}
+
+
+
+.closeBtn{
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background-color: rgb(128, 128, 128);
+    padding: 10px 20px;
+    border-radius: 100px;
+}
+
+.rateCont{
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.rateContent{
+    
+    width: 35%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.rateRec{
+    font-size: 60px;
+    color: black;
+}
+
+.rateStars{
+    color: #01875f;
+}
+
+.rateExpress{
+    /* background-color: blue; */
+    width: 65%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.indexing{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px; /* Set the height of the progress bar */
+    background-color: #ccc; /* Set the background color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.progress {
+    width: 100%; /* Set the width to 80% to represent the progress */
+    height: 100%; /* Set the height to fill the progress bar */
+    background-color: #01875f; /* Set the color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.progressFour {
+    width: 70%; /* Set the width to 80% to represent the progress */
+    height: 100%; /* Set the height to fill the progress bar */
+    background-color: #01875f; /* Set the color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.progressThree {
+    width: 20%; /* Set the width to 80% to represent the progress */
+    height: 100%; /* Set the height to fill the progress bar */
+    background-color: #01875f; /* Set the color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.progressTwo {
+    width: 7%; /* Set the width to 80% to represent the progress */
+    height: 100%; /* Set the height to fill the progress bar */
+    background-color: #01875f; /* Set the color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.progressOne {
+    width: 6%; /* Set the width to 80% to represent the progress */
+    height: 100%; /* Set the height to fill the progress bar */
+    background-color: #01875f; /* Set the color of the progress bar */
+    border-radius: 5px; /* Set border radius */
+}
+
+.pr-prs-rev{
+    margin: 20px;
+}
+
+.prs-rev{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prs-dtls{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.prs-nm{
+    color: black;
+}
+
+
+
+.prs-icn{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background: url(/assets/reviews/kipBen.jpg);
+    background-size: cover;
+}
+
+.prs-icn-calez{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: purple;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prs-icn-mos{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background: url(/assets/reviews/Moses.jpg);
+    background-size: cover;
+}
+
+.prs-icn-mach{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background: url(/assets/reviews/macha.jpg);
+    background-size: cover;
+}
+
+.prs-icn-ang{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: green;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prs-rt-hd{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.prs-str{
+    color: #01875f;
+    display: flex;
+    gap: 1px;
+}
+
+#prs-str{
+    font-size: 12px;
+}
+
+.rt-cont{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fnd-ask{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: flex-start;
+    gap: 20px;
+}
+
+.yes-btn, .no-btn{
+    border: solid #ccc 2px;
+    padding: 3px 20px;
+    border-radius: 20px;
+}
+
+.seeAll{
+    margin: 20px;
+    color: #01875f;
+}
+
+.whatNew{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.devCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+    height: 100px;
+}
+
+.fa-caret-up{
+    display: none;
+}
+
+#dropDown, #dropUp{
+    font-size: 25px;
+}
+
+#closeHr{
+    margin: 20px;
+    height: 0px;
+}
+
+.btm-navs{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: solid 1px grey;
+    height: 60px;
+}
+
+
+.fa-list, .fa-gamepad, .fa-film, .fa-bookmark{
+    font-size: 22px;
+}
+
+#btm-navs-star{
+    font-size: 22px;
+}
+
+#btm-navs-icn{
+    color: #01875f;
+}
+
+
+.nav-dtl-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    gap: 5px;
+}
+
+.appInstall {
+    /* Your existing styles for the anchor tag */
+    text-decoration: none; /* Remove underline */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Ensure cursor changes on hover */
+    background-color: #01875f;
+}
+
+/* Remove touch effect */
+.appInstall:active,
+.appInstall:focus,
+.appInstall:hover {
+    background-color: transparent; /* Remove background color */
+    color: #01875f; /* Use the default text color */
+}
