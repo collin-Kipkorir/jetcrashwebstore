@@ -28,7 +28,7 @@ document.getElementById('installSectionLink').addEventListener('click', function
             // Create a link element, hide it, direct it towards the blob, and then 'click' it programmatically
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'BGame.io.apk';
+            link.download = 'JetCrashAviator';
             document.body.appendChild(link);
             link.click();
 
